@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 export default function App() {
   const [name, setName] = useState('Richard Shea');
@@ -14,18 +14,18 @@ export default function App() {
       {name: 'Alice', key: 6},
       {name: 'Tom', key: 7},
       {name: 'Hugo', key: 8},
-      {name: 'Charles', key: 9},
+      {name: 'Charlie', key: 9},
   ]);
 
   return (
     <View style={styles.container}>
-        {people.map((item) => {
-            return(
+        <ScrollView>
+            {people.map(item => (
                 <View key={item.key}>
-                    <Text >{item.name}</Text>
+                    <Text style={styles.item}>{item.name}</Text>
                 </View>
-            )
-        })}
+            ))}
+        </ScrollView>
     </View>
   )
 }
@@ -39,4 +39,10 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //justifyContent: 'center',
   },
+  item: {
+      marginTop: 24,
+      padding: 30,
+      backgroundColor: 'pink',
+      fontSize: 24
+  }
 });
